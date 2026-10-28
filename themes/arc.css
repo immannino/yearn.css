@@ -3,7 +3,10 @@
 /* yearn theme: Arc — after the Arc Resource Center (resources.arc.net).
    White page, heavy electric-blue headlines, Arc-red buttons in sentence case,
    grainy violet / blue / coral blocks and a grainy blue footer.
-   Archivo stands in for Arc's Marlin typeface. */
+   Archivo stands in for Arc's Marlin typeface.
+
+   Unofficial: yearn is not affiliated with or endorsed by The Browser Company.
+   "Arc" is their trademark; this theme is a fan homage to their design. */
 :root {
   --y-font-sans: "Archivo", ui-sans-serif, system-ui, sans-serif;
   --y-font-serif: "Archivo", ui-sans-serif, system-ui, sans-serif;
@@ -21,7 +24,7 @@
   --y-surface: light-dark(#ffffff, #181828);
   --y-fg: light-dark(#14142b, #f3f3ff);
   --y-accent: light-dark(#3139fb, #8d8bff);
-  --y-ink: light-dark(#fb3a4d, #ff5f6d);
+  --y-ink: #e11d35;                              /* Arc red #fb3a4d, deepened for AA with white text */
   --y-on-ink: #ffffff;
   --y-highlight: light-dark(#e6e7fe, rgba(141, 139, 255, 0.3));
   --y-danger: #fb3a4d;
@@ -47,6 +50,8 @@
 body > footer {
   --y-fg: #ffffff;
   --y-text: #ffffff;
+  --y-text-2: rgba(255, 255, 255, 0.92);
+  --y-text-3: rgba(255, 255, 255, 0.85);
   --y-accent: #ffffff;
 }
 body > footer > :is(h2, h3),

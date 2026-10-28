@@ -35,7 +35,7 @@
 
   /* interaction */
   --y-accent: light-dark(#0c50ff, #5c88ff);      /* links, focus, checkboxes, button hover */
-  --y-on-accent: #ffffff;                        /* text on accent */
+  --y-on-accent: light-dark(#ffffff, #0b0b0b);  /* text on accent (button hover, checkboxes) */
   --y-ink: light-dark(#000000, #eeeee7);         /* primary button background */
   --y-on-ink: light-dark(#eeeee7, #1b1b1b);      /* primary button text */
   --y-highlight: light-dark(#fff1ac, rgba(255, 176, 5, 0.35)); /* <mark> */
@@ -54,11 +54,11 @@
 
   /* hero gradient — the dark value should be dark enough for light text */
   --y-hero-from: light-dark(#96d0ff, #340b05);
-  --y-hero-to: light-dark(#ffc1fd, #5092c7);
+  --y-hero-to: light-dark(#ffc1fd, #3d77a6);
   --y-hero-stop: 55%;
   --y-grain: 0.65;                               /* film grain on gradients, 0–1 */
   /* or replace the gradient entirely:
-  --y-hero: linear-gradient(135deg, light-dark(#fff1ac, #340b05), light-dark(#ffc1fd, #5092c7)); */
+  --y-hero: linear-gradient(135deg, light-dark(#fff1ac, #340b05), light-dark(#ffc1fd, #3d77a6)); */
 
   /* shape */
   --y-radius-s: 10px;

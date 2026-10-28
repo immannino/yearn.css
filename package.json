@@ -1,0 +1,36 @@
+{
+  "name": "yearn.css",
+  "version": "0.1.0",
+  "description": "A classless CSS library with soft gradients, film grain, serif headlines and swappable themes.",
+  "keywords": [
+    "css",
+    "classless",
+    "classless-css",
+    "stylesheet",
+    "themes",
+    "dark-mode",
+    "framework"
+  ],
+  "homepage": "https://immannino.github.io/yearn.css/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/immannino/yearn.css.git"
+  },
+  "bugs": "https://github.com/immannino/yearn.css/issues",
+  "license": "MIT",
+  "author": "Tony Mannino",
+  "style": "yearn.css",
+  "main": "yearn.css",
+  "files": [
+    "yearn.css",
+    "themes/",
+    "dist/"
+  ],
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "contrast": "node scripts/contrast.mjs"
+  },
+  "devDependencies": {
+    "lightningcss": "^1.30.1"
+  }
+}

@@ -55,7 +55,7 @@
   --y-surface: light-dark(#ffffff, #242422);
   --y-fg: light-dark(#000000, #eeeee7);
   --y-accent: light-dark(#0c50ff, #5c88ff);
-  --y-on-accent: #ffffff;
+  --y-on-accent: light-dark(#ffffff, #0b0b0b);
   --y-ink: light-dark(#000000, #eeeee7);
   --y-on-ink: light-dark(#eeeee7, #1b1b1b);
   --y-highlight: light-dark(#fff1ac, rgba(255, 176, 5, 0.35));
@@ -71,7 +71,7 @@
   /* hero gradient: solid "from" until the stop, then fades to "to".
      Set --y-hero to any background image to replace it entirely. */
   --y-hero-from: light-dark(#96d0ff, #340b05);
-  --y-hero-to: light-dark(#ffc1fd, #5092c7);
+  --y-hero-to: light-dark(#ffc1fd, #3d77a6);
   --y-hero-stop: 55%;
 
   /* fixed palette — used by the gradient and accent presets */
@@ -87,8 +87,8 @@
 
   /* derived — themes normally leave these alone */
   --y-text: color-mix(in srgb, var(--y-fg) 86%, transparent);
-  --y-text-2: color-mix(in srgb, var(--y-fg) 62%, transparent);
-  --y-text-3: color-mix(in srgb, var(--y-fg) 46%, transparent);
+  --y-text-2: color-mix(in srgb, var(--y-fg) 72%, transparent);
+  --y-text-3: color-mix(in srgb, var(--y-fg) 64%, transparent);
   --y-text-4: color-mix(in srgb, var(--y-fg) 20%, transparent);
   --y-fill: color-mix(in srgb, var(--y-fg) 8%, transparent);
   --y-fill-hover: color-mix(in srgb, var(--y-fg) 13%, transparent);
@@ -134,7 +134,7 @@
 :is(:root, *)[data-gradient="creamsicle"] { --y-hero-from: #fff1ac; --y-hero-to: #ff6f3c; }
 :is(:root, *)[data-gradient="grapefruit"] { --y-hero-from: #ffada0; --y-hero-to: #96d0ff; }
 :is(:root, *)[data-gradient="sunshine"] { --y-hero-from: #5092c7; --y-hero-to: #ffb005; }
-:is(:root, *)[data-gradient="midnight"] { --y-hero-from: #340b05; --y-hero-to: #5092c7; }
+:is(:root, *)[data-gradient="midnight"] { --y-hero-from: #340b05; --y-hero-to: #3d77a6; }
 :is(:root, *)[data-gradient="plain"] { --y-hero-from: var(--y-surface); --y-hero-to: var(--y-surface); }
 
 /* light gradients get dark text and vice versa, whatever the page mode */
@@ -147,11 +147,36 @@
   color-scheme: dark;
 }
 
+/* Browsers without light-dark() (before ~2024) can't read the color tokens.
+   Give them the default light palette; !important also overrides theme files,
+   which use light-dark() too. */
+@supports not (color: light-dark(#000, #fff)) {
+  :root {
+    color-scheme: light;
+    --y-bg: #eeeee7 !important;
+    --y-surface: #ffffff !important;
+    --y-fg: #000000 !important;
+    --y-accent: #0c50ff !important;
+    --y-on-accent: #ffffff !important;
+    --y-ink: #000000 !important;
+    --y-on-ink: #eeeee7 !important;
+    --y-highlight: #fff1ac !important;
+    --y-danger: #fa3d1d !important;
+    --y-pre-bg: #1b1b1b !important;
+    --y-heading-color: rgba(0, 0, 0, 0.86) !important;
+    --y-hero: initial !important;
+    --y-hero-from: #96d0ff !important;
+    --y-hero-to: #ffc1fd !important;
+    --y-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 8px 24px -10px rgba(0, 0, 0, 0.12) !important;
+    --y-shadow-lift: 0 2px 4px rgba(0, 0, 0, 0.04), 0 24px 48px -16px rgba(0, 0, 0, 0.22) !important;
+  }
+}
+
 /* accent presets */
 :is(:root, *)[data-accent="blue"] { --y-accent: light-dark(#0c50ff, #5c88ff); }
-:is(:root, *)[data-accent="pink"] { --y-accent: light-dark(#d600cf, #ff5cf8); }
-:is(:root, *)[data-accent="red"] { --y-accent: light-dark(#e5300f, #ff6a50); }
-:is(:root, *)[data-accent="orange"] { --y-accent: light-dark(#e2551f, #ff8a5c); }
+:is(:root, *)[data-accent="pink"] { --y-accent: light-dark(#c400be, #ff5cf8); }
+:is(:root, *)[data-accent="red"] { --y-accent: light-dark(#c42a0c, #ff6a50); }
+:is(:root, *)[data-accent="orange"] { --y-accent: light-dark(#b34410, #ff8a5c); }
 :is(:root, *)[data-accent="brown"] { --y-accent: light-dark(#340b05, #c98a6b); }
 
 /* ------------------------------------------------------------------ */
@@ -350,11 +375,11 @@ hr {
 
 /* lists */
 ul, ol {
-  padding-left: 1.4em;
+  padding-inline-start: 1.4em;
 }
 li {
   margin-bottom: 0.4em;
-  padding-left: 0.2em;
+  padding-inline-start: 0.2em;
 }
 li > :is(ul, ol) {
   margin: 0.4em 0 0;
@@ -381,8 +406,9 @@ dd {
 blockquote {
   position: relative;
   margin: 2.5rem 0;
-  padding: 0 0 0 clamp(1.25rem, 3vw, 2rem);
-  border-left: 2px solid var(--y-accent);
+  padding: 0;
+  padding-inline-start: clamp(1.25rem, 3vw, 2rem);
+  border-inline-start: 2px solid var(--y-accent);
   font-family: var(--y-font-serif);
   font-size: clamp(1.375rem, 1vw + 1rem, 1.75rem);
   line-height: 1.35;
@@ -413,6 +439,16 @@ q {
 /* code */
 code, kbd, samp, pre {
   font-family: var(--y-font-mono);
+}
+
+/* code reads left to right, even on right-to-left pages */
+code, kbd, samp {
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+pre {
+  direction: ltr;
+  text-align: left;
 }
 
 code, samp {
@@ -599,7 +635,7 @@ nav a > strong {
   font-weight: inherit;
 }
 nav > :is(ul, ol):last-child:not(:first-child) {
-  margin-left: auto;
+  margin-inline-start: auto;
 }
 
 /* Frosted pill nav, in the hero or pinned at the top of the page */
@@ -609,7 +645,7 @@ body > nav {
   flex-wrap: nowrap;
   max-width: var(--y-wide);
   padding: 0.375rem;
-  text-align: left;
+  text-align: start;
   color: var(--y-text);
   background: var(--y-glass);
   border: 1px solid var(--y-stroke);
@@ -724,8 +760,8 @@ main > article {
   background: var(--y-hero, linear-gradient(180deg, var(--y-hero-from) var(--y-hero-stop), var(--y-hero-to)));
   color: var(--y-text);
   --y-fill: var(--y-glass);
-  --y-text-2: color-mix(in srgb, var(--y-fg) 82%, transparent);
-  --y-text-3: color-mix(in srgb, var(--y-fg) 68%, transparent);
+  --y-text-2: color-mix(in srgb, var(--y-fg) 86%, transparent);
+  --y-text-3: color-mix(in srgb, var(--y-fg) 74%, transparent);
 }
 
 /* Grain: high-contrast grey noise overlaid on the gradient, lightening and
@@ -778,8 +814,8 @@ body > footer {
   font-size: 0.9375rem;
   color-scheme: dark;
   /* footer colors vary a lot by theme, so keep muted text readable */
-  --y-text-2: color-mix(in srgb, var(--y-fg) 78%, transparent);
-  --y-text-3: color-mix(in srgb, var(--y-fg) 64%, transparent);
+  --y-text-2: color-mix(in srgb, var(--y-fg) 82%, transparent);
+  --y-text-3: color-mix(in srgb, var(--y-fg) 70%, transparent);
   --y-text-4: color-mix(in srgb, var(--y-fg) 30%, transparent);
 }
 body > footer > * {
@@ -801,7 +837,7 @@ body > footer nav {
 }
 body > footer nav a {
   padding-inline: 0;
-  margin-right: 1.5rem;
+  margin-inline-end: 1.5rem;
 }
 body > footer nav a:hover {
   background: none;
@@ -982,11 +1018,14 @@ textarea {
 }
 
 select:not([multiple], [size]) {
-  padding-right: 2.75rem;
+  padding-inline-end: 2.75rem;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' stroke='%23888' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 1.5l5 5 5-5'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 1.1rem center;
   cursor: pointer;
+}
+select:not([multiple], [size]):dir(rtl) {
+  background-position: left 1.1rem center;
 }
 
 /* checkbox + radio */
@@ -1139,7 +1178,7 @@ input[type="file"] {
   border-radius: 12px;
 }
 input[type="file"]::file-selector-button {
-  margin-right: 1rem;
+  margin-inline-end: 1rem;
   padding: 0.625rem 1.125rem;
   font-family: var(--y-button-font);
   font-size: calc(var(--y-button-size) - 0.0625rem);
@@ -1164,7 +1203,7 @@ fieldset {
 }
 legend {
   padding: 0 0.5rem;
-  margin-left: -0.5rem;
+  margin-inline-start: -0.5rem;
   font-family: var(--y-font-mono);
   font-size: 0.75rem;
   letter-spacing: 0.14em;
@@ -1172,23 +1211,24 @@ legend {
   color: var(--y-text-3);
 }
 
-/* search: <form role="search"><input type="search"><button>Go</button></form> */
-form[role="search"] {
+/* search: <search><form>…</form></search> or <form role="search"><input type="search"><button>Go</button></form> */
+:is(form[role="search"], search > form) {
   display: flex;
   align-items: center;
   gap: 0.375rem;
-  padding: 0.375rem 0.375rem 0.375rem 1.25rem;
+  padding: 0.375rem;
+  padding-inline-start: 1.25rem;
   background: var(--y-surface);
   border: 1px solid var(--y-stroke-strong);
   border-radius: var(--y-radius-pill);
   box-shadow: var(--y-shadow);
   transition: border-color 0.2s var(--y-ease), box-shadow 0.2s var(--y-ease);
 }
-form[role="search"]:focus-within {
+:is(form[role="search"], search > form):focus-within {
   border-color: var(--y-accent);
   box-shadow: 0 0 0 4px var(--y-accent-soft), var(--y-shadow);
 }
-form[role="search"] input:not([type="submit"]) {
+:is(form[role="search"], search > form) input:not([type="submit"]) {
   flex: 1;
   margin: 0;
   padding: 0.5rem 0;
@@ -1197,7 +1237,7 @@ form[role="search"] input:not([type="submit"]) {
   border-radius: 0;
   box-shadow: none !important;
 }
-form[role="search"] :is(button, input[type="submit"]) {
+:is(form[role="search"], search > form) :is(button, input[type="submit"]) {
   flex: none;
 }
 
@@ -1264,7 +1304,7 @@ caption {
 }
 th, td {
   padding: 0.875rem 1.125rem;
-  text-align: left;
+  text-align: start;
   vertical-align: top;
   border-bottom: 1px solid var(--y-stroke);
 }
@@ -1300,6 +1340,41 @@ tfoot {
     overflow-x: auto;
     white-space: nowrap;
   }
+}
+
+/* ------------------------------------------------------------------ */
+/* Media + small elements                                              */
+/* ------------------------------------------------------------------ */
+
+audio {
+  display: block;
+  width: 100%;
+  margin: 0 0 1.25rem;
+  border-radius: var(--y-radius-pill);
+}
+
+output {
+  display: inline-block;
+  padding: 0.1em 0.55em;
+  font-family: var(--y-font-mono);
+  font-size: 0.875em;
+  font-variant-numeric: tabular-nums;
+  background: var(--y-fill);
+  border-radius: 6px;
+}
+
+/* <menu> is a toolbar: a row of buttons or links */
+menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0 0 1.25rem;
+  padding: 0;
+  list-style: none;
+}
+menu > li {
+  margin: 0;
+  padding: 0;
 }
 
 /* ------------------------------------------------------------------ */
@@ -1395,6 +1470,98 @@ dialog form[method="dialog"] {
   from {
     opacity: 0;
     transform: translateY(8px) scale(0.97);
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Print                                                               */
+/* ------------------------------------------------------------------ */
+
+@media print {
+  :root {
+    color-scheme: light;
+    --y-bg: #ffffff;
+    --y-surface: #ffffff;
+    --y-fg: #000000;
+    --y-accent: #000000;
+    --y-heading-color: #000000;
+    --y-pre-bg: #f4f4f4;
+    --y-pre-fg: #000000;
+    --y-shadow: none;
+    --y-shadow-lift: none;
+  }
+  html,
+  body {
+    font-size: 11pt;
+    background: #ffffff !important;
+  }
+  body {
+    max-width: none;
+    padding: 0;
+  }
+  body > header,
+  body > footer,
+  :not(:root)[data-gradient] {
+    margin: 0 0 1.5rem !important;
+    padding: 0 !important;
+    background: none !important;
+    color: #000000 !important;
+    color-scheme: light;
+    border-radius: 0;
+  }
+  body > header::before,
+  body > footer::before,
+  :not(:root)[data-gradient]::before,
+  nav,
+  dialog,
+  button,
+  input:is([type="submit"], [type="button"], [type="reset"]),
+  a[role="button"],
+  form[role="search"],
+  search {
+    display: none !important;
+  }
+  body > header {
+    text-align: start;
+  }
+  body > header :is(h1, h2) {
+    max-width: none;
+  }
+  a {
+    color: inherit;
+  }
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: #555555;
+    word-break: break-all;
+  }
+  section:has(> article + article) {
+    display: block;
+    margin-inline: 0;
+  }
+  article,
+  aside,
+  details,
+  table,
+  pre {
+    border: 1px solid #cccccc !important;
+    box-shadow: none !important;
+    transform: none !important;
+  }
+  pre {
+    white-space: pre-wrap;
+  }
+  h1, h2, h3, h4 {
+    break-after: avoid;
+  }
+  article,
+  figure,
+  pre,
+  blockquote,
+  tr,
+  img {
+    break-inside: avoid;
   }
 }
 

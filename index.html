@@ -3,7 +3,58 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>yearn.css — a classless stylesheet</title>
+  <title>yearn.css — a classless CSS library with gradients, grain and themes</title>
+  <meta name="description" content="yearn.css is a classless stylesheet: write plain semantic HTML and get soft gradients, film grain, serif headlines, pill buttons, dark mode and 9 swappable themes. One link tag, no classes.">
+  <meta name="author" content="Tony Mannino">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://immannino.github.io/yearn.css/">
+
+  <!-- Browser chrome -->
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#eeeee7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1b1b1b" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="yearn.css">
+  <meta property="og:title" content="yearn.css — a classless CSS library">
+  <meta property="og:description" content="Write plain HTML, get soft gradients, film grain, serif headlines and 9 swappable themes. No classes required.">
+  <meta property="og:url" content="https://immannino.github.io/yearn.css/">
+  <meta property="og:image" content="https://immannino.github.io/yearn.css/assets/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="yearn.css — a classless stylesheet. Soft gradients, film grain, serif headlines and swappable themes.">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="yearn.css — a classless CSS library">
+  <meta name="twitter:description" content="Write plain HTML, get soft gradients, film grain, serif headlines and 9 swappable themes.">
+  <meta name="twitter:image" content="https://immannino.github.io/yearn.css/assets/og.png">
+  <meta name="twitter:image:alt" content="yearn.css — a classless stylesheet. Soft gradients, film grain, serif headlines and swappable themes.">
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareSourceCode",
+    "name": "yearn.css",
+    "description": "A classless CSS library with soft gradients, film grain, serif headlines and swappable themes.",
+    "url": "https://immannino.github.io/yearn.css/",
+    "codeRepository": "https://github.com/immannino/yearn.css",
+    "programmingLanguage": "CSS",
+    "license": "https://opensource.org/licenses/MIT",
+    "version": "0.1.0",
+    "author": { "@type": "Person", "name": "Tony Mannino", "url": "https://github.com/immannino" },
+    "image": "https://immannino.github.io/yearn.css/assets/og.png"
+  }
+  </script>
+
+  <!-- yearn.css @imports Google Fonts; preconnecting lets that request start sooner -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="yearn.css">
 
   <!-- Demo-only tweak panel. Not part of yearn.css. -->
@@ -69,6 +120,8 @@
       </hgroup>
       <p>Add the stylesheet to the <code>&lt;head&gt;</code> of any page. Everything else is just the HTML you already know how to write.</p>
 <pre><code>&lt;link rel="stylesheet" href="yearn.css"&gt;</code></pre>
+      <p>Or straight from a CDN, no download needed:</p>
+<pre><code>&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/immannino/yearn.css@0.1.0/dist/yearn.min.css"&gt;</code></pre>
       <p>Want a different palette? Load a theme after it. A theme is just a handful of CSS variables, so you can write your own from <code>themes/_template.css</code>.</p>
 <pre><code>&lt;link rel="stylesheet" href="yearn.css"&gt;
 &lt;link rel="stylesheet" href="themes/dusk.css"&gt;</code></pre>
@@ -145,7 +198,7 @@
         <p>Put two or more <code>&lt;article&gt;</code>s in a <code>&lt;section&gt;</code> and they become a responsive card grid.</p>
       </hgroup>
       <article>
-        <img src="art.svg" alt="Illustration of a browser window floating over a pastel gradient">
+        <img src="assets/art.svg" alt="Illustration of a browser window floating over a pastel gradient">
         <h3>Inset hero</h3>
         <p>Your <code>&lt;header&gt;</code> becomes a rounded, grainy gradient panel set inside the page — like a webview inside its window.</p>
       </article>
@@ -233,7 +286,7 @@
 &lt;/section&gt;</code></pre>
 
       <figure>
-        <img src="art.svg" alt="Illustration of a browser window floating over a pastel gradient">
+        <img src="assets/art.svg" alt="Illustration of a browser window floating over a pastel gradient">
         <figcaption>Figure 1 — Images get soft corners and a mono caption</figcaption>
       </figure>
 
@@ -241,15 +294,15 @@
 
       <h3>Tables</h3>
       <table>
-        <caption>How yearn compares</caption>
+        <caption>What's in the box (sizes from npm run build)</caption>
         <thead>
-          <tr><th>Library</th><th>Classes</th><th>Dark mode</th><th>Size</th></tr>
+          <tr><th>File</th><th>What it is</th><th>Size</th></tr>
         </thead>
         <tbody>
-          <tr><td>yearn.css</td><td>None</td><td>Auto + manual</td><td>~8 KB gz</td></tr>
-          <tr><td>new.css</td><td>None</td><td>Auto</td><td>~4.5 KB</td></tr>
-          <tr><td>Water.css</td><td>None</td><td>Auto</td><td>~2 KB</td></tr>
-          <tr><td>Pico</td><td>Optional</td><td>Auto + manual</td><td>~10 KB</td></tr>
+          <tr><td><code>yearn.css</code></td><td>Readable source, loads Google Fonts</td><td>42 KB</td></tr>
+          <tr><td><code>dist/yearn.min.css</code></td><td>Minified, loads Google Fonts</td><td>7.0 KB gz</td></tr>
+          <tr><td><code>dist/yearn.core.min.css</code></td><td>Minified, bring your own fonts</td><td>6.9 KB gz</td></tr>
+          <tr><td><code>themes/*.css</code></td><td>One palette each, light + dark</td><td>0.2–1.1 KB gz</td></tr>
         </tbody>
       </table>
     </section>
@@ -352,10 +405,10 @@
     <h2>Make something <em>lovely</em>.</h2>
     <p><a href="#start" role="button">Get started</a></p>
     <nav>
-      <a href="#">GitHub</a>
-      <a href="#">Docs</a>
-      <a href="#">Changelog</a>
-      <a href="#">License</a>
+      <a href="https://github.com/immannino/yearn.css">GitHub</a>
+      <a href="https://github.com/immannino/yearn.css#readme">Docs</a>
+      <a href="https://github.com/immannino/yearn.css/blob/main/CHANGELOG.md">Changelog</a>
+      <a href="https://github.com/immannino/yearn.css/blob/main/LICENSE">License</a>
     </nav>
     <p>yearn.css · MIT · Made with care</p>
   </footer>

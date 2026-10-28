@@ -10,7 +10,7 @@
   --y-bg: light-dark(#ededef, #001827);          /* neutral-100 / deep navy */
   --y-surface: light-dark(#ffffff, #00243b);     /* white / navy-darker */
   --y-fg: light-dark(#050505, #eaf3f8);          /* neutral-ink */
-  --y-accent: light-dark(#00799c, #5cc6e6);      /* blue-dark for AA links on white */
+  --y-accent: light-dark(#00657f, #5cc6e6);      /* blue-darker: AA for links on grey and white */
   --y-ink: light-dark(#003e68, #fac420);         /* navy primary; yellow in dark mode */
   --y-on-ink: light-dark(#ffffff, #5d490b);
   --y-highlight: light-dark(#fff3c4, rgba(250, 196, 32, 0.3)); /* yellow-tint */
