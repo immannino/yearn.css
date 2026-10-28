@@ -1,0 +1,17 @@
+/* yearn theme: Mono — newsprint greys, black-and-white accent, serif body */
+:root {
+  --y-font-sans: "Newsreader", "Iowan Old Style", Georgia, serif;
+  --y-bg: light-dark(#f3f3f0, #111111);
+  --y-surface: light-dark(#ffffff, #1b1b1b);
+  --y-fg: light-dark(#000000, #f2f2f2);
+  --y-accent: light-dark(#000000, #ffffff);
+  --y-on-accent: light-dark(#ffffff, #000000);
+  --y-ink: light-dark(#000000, #f2f2f2);
+  --y-on-ink: light-dark(#f3f3f0, #111111);
+  --y-highlight: light-dark(#e2e2dc, rgba(255, 255, 255, 0.18));
+  --y-pre-bg: light-dark(#111111, #000000);
+  --y-pre-fg: #f2f2f2;
+  --y-footer-bg: #000000;
+  --y-hero-from: light-dark(#e6e6e2, #1c1c1c);
+  --y-hero-to: light-dark(#c4c4be, #4a4a4a);
+}

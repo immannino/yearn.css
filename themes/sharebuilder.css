@@ -1,0 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,300..700;1,300..700&display=swap");
+
+/* yearn theme: ShareBuilder 401k — navy brand, accessible green, sky-blue links, Work Sans.
+   Colors from the SB design system (sb-design brand preview). */
+:root {
+  --y-font-sans: "Work Sans", ui-sans-serif, system-ui, sans-serif;
+  --y-font-serif: "Work Sans", ui-sans-serif, system-ui, sans-serif;
+  --y-heading-weight: 600;
+
+  --y-bg: light-dark(#ededef, #001827);          /* neutral-100 / deep navy */
+  --y-surface: light-dark(#ffffff, #00243b);     /* white / navy-darker */
+  --y-fg: light-dark(#050505, #eaf3f8);          /* neutral-ink */
+  --y-accent: light-dark(#00799c, #5cc6e6);      /* blue-dark for AA links on white */
+  --y-ink: light-dark(#003e68, #fac420);         /* navy primary; yellow in dark mode */
+  --y-on-ink: light-dark(#ffffff, #5d490b);
+  --y-highlight: light-dark(#fff3c4, rgba(250, 196, 32, 0.3)); /* yellow-tint */
+  --y-success: #128020;
+  --y-warning: #fac420;
+  --y-danger: light-dark(#a8203b, #f14668);
+  --y-pre-bg: light-dark(#00243b, #00121e);
+  --y-pre-fg: #eaf3f8;
+  --y-footer-bg: #003e68;                        /* navy-base */
+
+  /* light: green-accent to blue-light, dark: navy to accessible green */
+  --y-hero-from: light-dark(#d2f0e3, #002e4d);
+  --y-hero-to: light-dark(#9bd9ec, #128020);
+
+  --y-radius-s: 6px;
+  --y-radius: 10px;
+  --y-radius-l: 16px;
+}

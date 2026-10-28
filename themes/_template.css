@@ -1,0 +1,67 @@
+/*
+ * yearn theme template
+ *
+ * Copy this file, change the values, and load it after yearn.css:
+ *   <link rel="stylesheet" href="yearn.css">
+ *   <link rel="stylesheet" href="themes/my-theme.css">
+ *
+ * Every color is light-dark(<light mode>, <dark mode>). Use a plain color
+ * when both modes should match. Text tiers, fills, borders, glass and focus
+ * rings are derived from --y-fg, --y-surface and --y-accent automatically.
+ *
+ * The values below are yearn's defaults. Delete any line you don't change.
+ */
+
+:root {
+  /* fonts (import your own above this block if you change them) */
+  --y-font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --y-font-serif: "Newsreader", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --y-font-mono: "DM Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --y-heading-weight: 400;                       /* h1–h3; ~600 suits a sans display font */
+  --y-heading-color: var(--y-text);              /* h1–h3 */
+
+  /* buttons */
+  --y-button-font: var(--y-font-mono);
+  --y-button-size: 0.8125rem;
+  --y-button-weight: 500;
+  --y-button-case: uppercase;                    /* or none for sentence case */
+  --y-button-tracking: 0.12em;
+  --y-button-radius: 9999px;
+
+  /* page */
+  --y-bg: light-dark(#eeeee7, #1b1b1b);          /* page background ("paper") */
+  --y-surface: light-dark(#ffffff, #242422);     /* cards, inputs, tables */
+  --y-fg: light-dark(#000000, #eeeee7);          /* base text color; tiers are mixed from it */
+
+  /* interaction */
+  --y-accent: light-dark(#0c50ff, #5c88ff);      /* links, focus, checkboxes, button hover */
+  --y-on-accent: #ffffff;                        /* text on accent */
+  --y-ink: light-dark(#000000, #eeeee7);         /* primary button background */
+  --y-on-ink: light-dark(#eeeee7, #1b1b1b);      /* primary button text */
+  --y-highlight: light-dark(#fff1ac, rgba(255, 176, 5, 0.35)); /* <mark> */
+
+  /* status */
+  --y-success: #2fbf71;
+  --y-warning: #ffb005;
+  --y-danger: #fa3d1d;
+
+  /* blocks */
+  --y-pre-bg: light-dark(#1b1b1b, #111111);      /* <pre> background */
+  --y-pre-fg: #eeeee7;
+  --y-footer-bg: #111111;                        /* footer is always rendered in dark mode */
+  --y-footer-inset: clamp(0.375rem, 0.9vw, 0.75rem); /* 0px = edge to edge */
+  --y-footer-radius: 24px;
+
+  /* hero gradient — the dark value should be dark enough for light text */
+  --y-hero-from: light-dark(#96d0ff, #340b05);
+  --y-hero-to: light-dark(#ffc1fd, #5092c7);
+  --y-hero-stop: 55%;
+  --y-grain: 0.65;                               /* film grain on gradients, 0–1 */
+  /* or replace the gradient entirely:
+  --y-hero: linear-gradient(135deg, light-dark(#fff1ac, #340b05), light-dark(#ffc1fd, #5092c7)); */
+
+  /* shape */
+  --y-radius-s: 10px;
+  --y-radius: 16px;
+  --y-radius-l: 24px;
+}

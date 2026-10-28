@@ -1,0 +1,15 @@
+/* yearn theme: Mint — sage paper, forest ink, fresh green accent */
+:root {
+  --y-bg: light-dark(#e8eee6, #121815);
+  --y-surface: light-dark(#fbfdfa, #1b231f);
+  --y-fg: light-dark(#0c2118, #e4eee8);
+  --y-accent: light-dark(#0b7a52, #4fd1a1);
+  --y-ink: light-dark(#0c2118, #e4eee8);
+  --y-on-ink: light-dark(#e8eee6, #121815);
+  --y-highlight: light-dark(#c8f1d8, rgba(79, 209, 161, 0.28));
+  --y-pre-bg: light-dark(#0c2118, #0b100d);
+  --y-pre-fg: #e4eee8;
+  --y-footer-bg: #0c2118;
+  --y-hero-from: light-dark(#bde8d1, #0f2a1f);
+  --y-hero-to: light-dark(#e3d6ff, #3e7d6a);
+}

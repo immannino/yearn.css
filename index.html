@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>yearn.css — a classless stylesheet</title>
+  <link rel="stylesheet" href="yearn.css">
+
+  <!-- Demo-only tweak panel. Not part of yearn.css. -->
+  <style>
+    #tweaks {
+      position: fixed; right: 1rem; bottom: 1rem; z-index: 50;
+      width: 15rem; margin: 0;
+      background: var(--y-glass); border: 1px solid var(--y-stroke-strong);
+      border-radius: var(--y-radius-l); box-shadow: var(--y-shadow-lift);
+      -webkit-backdrop-filter: blur(20px) saturate(1.6); backdrop-filter: blur(20px) saturate(1.6);
+    }
+    #tweaks label { font-size: 0.8125rem; margin-bottom: 0.25rem; }
+    #tweaks select { padding: 0.45rem 2.25rem 0.45rem 0.75rem; font-size: 0.875rem; margin: 0.25rem 0 0.75rem; }
+    #tweaks summary { padding: 0.625rem 0.75rem 0.625rem 1.25rem; font-family: var(--y-font-mono); font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; }
+    #tweaks form { margin: 0 1rem 0.5rem; }
+    @media (max-width: 40rem) { #tweaks { left: 1rem; right: 1rem; width: auto; } }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <a href="#"><strong>yearn</strong></a>
+      <ul>
+        <li><a href="#themes" aria-current="page">Themes</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#typography">Type</a></li>
+        <li><a href="#forms">Forms</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+    <hgroup>
+      <p>A classless stylesheet</p>
+      <h1>Websites that feel a little more <em>human</em></h1>
+      <p>Drop in one stylesheet, write plain HTML, and get soft gradients, warm paper, serif headlines and pill buttons. No classes required.</p>
+    </hgroup>
+    <p>
+      <a href="#start" role="button">Get started</a>
+      <a href="#features" role="button">See elements</a>
+    </p>
+    <!-- Demo-only: switch themes without leaving the hero -->
+    <nav id="hero-themes" aria-label="Themes" style="display:inline-flex;width:auto;max-width:100%;margin-top:2.5rem">
+      <ul>
+        <li><a href="?" data-theme-file="" aria-current="true">Default</a></li>
+        <li><a href="?theme=mint" data-theme-file="mint">Mint</a></li>
+        <li><a href="?theme=dusk" data-theme-file="dusk">Dusk</a></li>
+        <li><a href="?theme=ember" data-theme-file="ember">Ember</a></li>
+        <li><a href="?theme=tide" data-theme-file="tide">Tide</a></li>
+        <li><a href="?theme=mono" data-theme-file="mono">Mono</a></li>
+        <li><a href="?theme=candy" data-theme-file="candy">Candy</a></li>
+        <li><a href="?theme=arc" data-theme-file="arc">Arc</a></li>
+        <li><a href="?theme=sharebuilder" data-theme-file="sharebuilder">ShareBuilder</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <section id="start">
+      <hgroup>
+        <h5>Getting started</h5>
+        <h2>One line. That's the whole setup.</h2>
+      </hgroup>
+      <p>Add the stylesheet to the <code>&lt;head&gt;</code> of any page. Everything else is just the HTML you already know how to write.</p>
+<pre><code>&lt;link rel="stylesheet" href="yearn.css"&gt;</code></pre>
+      <p>Want a different palette? Load a theme after it. A theme is just a handful of CSS variables, so you can write your own from <code>themes/_template.css</code>.</p>
+<pre><code>&lt;link rel="stylesheet" href="yearn.css"&gt;
+&lt;link rel="stylesheet" href="themes/dusk.css"&gt;</code></pre>
+      <p>Fine-tune the mood with attributes on <code>&lt;html&gt;</code> — or try the panel in the corner. Press <kbd>⌘</kbd> <kbd>K</kbd> to imagine a command bar.</p>
+<pre><code>&lt;html data-theme="dark" data-gradient="creamsicle" data-accent="pink"&gt;</code></pre>
+    </section>
+
+    <section id="themes">
+      <hgroup>
+        <h5>Themes</h5>
+        <h2>Same shapes, <em>different</em> weather</h2>
+        <p>Every theme sets its own paper, ink, accent and hero gradient — in both light and dark mode. Pick one to restyle this whole page.</p>
+      </hgroup>
+      <article>
+        <div style="display:flex;gap:6px;margin-bottom:1rem"><span style="flex:3;height:44px;border-radius:10px;background:linear-gradient(180deg,#96d0ff 55%,#ffc1fd)"></span><span style="flex:1;border-radius:10px;background:#eeeee7;border:1px solid #0001"></span><span style="flex:1;border-radius:10px;background:#0c50ff"></span></div>
+        <h3>Default</h3>
+        <p>Warm Gatsby-white paper, black ink, internet blue.</p>
+        <p><button data-theme-file="">Use default</button></p>
+      </article>
+      <article>
+        <div style="display:flex;gap:6px;margin-bottom:1rem"><span style="flex:3;height:44px;border-radius:10px;background:linear-gradient(180deg,#bde8d1 55%,#e3d6ff)"></span><span style="flex:1;border-radius:10px;background:#e8eee6;border:1px solid #0001"></span><span style="flex:1;border-radius:10px;background:#0b7a52"></span></div>
+        <h3>Mint</h3>
+        <p>Sage paper, forest ink and a fresh green accent.</p>
+        <p><button data-theme-file="mint">Try Mint</button></p>
+      </article>
+      <article>
+        <div style="display:flex;gap:6px;margin-bottom:1rem"><span style="flex:3;height:44px;border-radius:10px;background:linear-gradient(180deg,#d8cbff 55%,#ffcfb8)"></span><span style="flex:1;border-radius:10px;background:#efecf5;border:1px solid #0001"></span><span style="flex:1;border-radius:10px;background:#6436f0"></span></div>
+        <h3>Dusk</h3>
+        <p>Lavender paper, plum ink, a lilac-to-peach sky.</p>
+        <p><button data-theme-file="dusk">Try Dusk</button></p>
+      </article>
+      <article>
+        <div style="display:flex;gap:6px;margin-bottom:1rem"><span style="flex:3;height:44px;border-radius:10px;background:linear-gradient(180deg,#fff1ac 55%,#ff6f3c)"></span><span style="flex:1;border-radius:10px;background:#f4ece2;border:1px solid #0001"></span><span style="flex:1;border-radius:10px;background:#e0300f"></span></div>
+        <h3>Ember</h3>
+        <p>Toasted cream, espresso ink, signal red.</p>
+        <p><button data-theme-file="ember">Try Ember</button></p>
+      </article>
+      <article>
+        <div style="display:flex;gap:6px;margin-bottom:1rem"><span style="flex:3;height:44px;border-radius:10px;background:linear-gradient(180deg,#a6dcf2 55%,#cbf3dc)"></span><span style="flex:1;border-radius:10px;background:#e7edf1;border:1px solid #0001"></span><span style="flex:1;border-radius:10px;background:#007c9e"></span></div>
+        <h3>Tide</h3>
+        <p>Cool slate, navy ink, teal and seafoam.</p>
+        <p><button data-theme-file="tide">Try Tide</button></p>
+      </article>
+      <article>
+        <div style="display:flex;gap:6px;margin-bottom:1rem"><span style="flex:3;height:44px;border-radius:10px;background:linear-gradient(180deg,#e6e6e2 55%,#c4c4be)"></span><span style="flex:1;border-radius:10px;background:#f3f3f0;border:1px solid #0001"></span><span style="flex:1;border-radius:10px;background:#000"></span></div>
+        <h3>Mono</h3>
+        <p>Newsprint greys and a serif body. Quiet and editorial.</p>
+        <p><button data-theme-file="mono">Try Mono</button></p>
+      </article>
+      <article>
+        <div style="display:flex;gap:6px;margin-bottom:1rem"><span style="flex:3;height:44px;border-radius:10px;background:linear-gradient(150deg,#ffe08a 10%,#ff9d7a 50%,#ff9cf4)"></span><span style="flex:1;border-radius:10px;background:#fdf0f8;border:1px solid #0001"></span><span style="flex:1;border-radius:10px;background:#d600cf"></span></div>
+        <h3>Candy</h3>
+        <p>Pink paper, magenta accent, a loud diagonal hero and rounder corners.</p>
+        <p><button data-theme-file="candy">Try Candy</button></p>
+      </article>
+      <article>
+        <div style="display:flex;gap:6px;margin-bottom:1rem"><span style="flex:1;height:44px;border-radius:8px;background:#8a6cf7"></span><span style="flex:1;border-radius:8px;background:#1a3cf0"></span><span style="flex:1;border-radius:8px;background:#ff5f6a"></span><span style="flex:1;border-radius:8px;background:#3b3bf2"></span></div>
+        <h3>Arc</h3>
+        <p>After the Arc Resource Center: heavy blue headlines, red buttons, grainy color blocks.</p>
+        <p><button data-theme-file="arc">Try Arc</button></p>
+      </article>
+      <article>
+        <div style="display:flex;gap:6px;margin-bottom:1rem"><span style="flex:3;height:44px;border-radius:10px;background:linear-gradient(180deg,#d2f0e3 55%,#9bd9ec)"></span><span style="flex:1;border-radius:10px;background:#003e68"></span><span style="flex:1;border-radius:10px;background:#fac420"></span></div>
+        <h3>ShareBuilder</h3>
+        <p>Navy, green and sky blue with Work Sans headings. Yellow buttons in dark mode.</p>
+        <p><button data-theme-file="sharebuilder">Try ShareBuilder</button></p>
+      </article>
+    </section>
+
+    <section id="features">
+      <hgroup>
+        <h5>Features</h5>
+        <h2>Calm by default, <em>playful</em> on purpose</h2>
+        <p>Put two or more <code>&lt;article&gt;</code>s in a <code>&lt;section&gt;</code> and they become a responsive card grid.</p>
+      </hgroup>
+      <article>
+        <img src="art.svg" alt="Illustration of a browser window floating over a pastel gradient">
+        <h3>Inset hero</h3>
+        <p>Your <code>&lt;header&gt;</code> becomes a rounded, grainy gradient panel set inside the page — like a webview inside its window.</p>
+      </article>
+      <article>
+        <h6>01 — Type</h6>
+        <h3>Serif headlines</h3>
+        <p>Newsreader for display, Inter for reading, DM Mono for the little uppercase labels that hold it all together.</p>
+        <footer>Swap fonts with three CSS variables.</footer>
+      </article>
+      <article data-gradient="creamsicle">
+        <h6>02 — Color</h6>
+        <h3>Six gradients</h3>
+        <p>Cotton candy, creamsicle, grapefruit, sunshine, midnight and plain. Add <code>data-gradient</code> to any element.</p>
+      </article>
+      <article>
+        <h6>03 — Dark mode</h6>
+        <h3>Follows the OS</h3>
+        <p>Warm charcoal instead of pure black. Force either theme with <code>data-theme</code>.</p>
+      </article>
+      <article data-gradient="midnight">
+        <h6>04 — Forms</h6>
+        <h3>Friendly inputs</h3>
+        <p>Soft focus rings, custom checkboxes, switches, a pill search bar and a rainbow progress bar.</p>
+      </article>
+      <article>
+        <h6>05 — Accessible</h6>
+        <h3>Dotted focus</h3>
+        <p>Keyboard focus gets a dotted ring. Reduced-motion users get no animation at all.</p>
+      </article>
+    </section>
+
+    <section id="typography">
+      <hgroup>
+        <h5>Typography</h5>
+        <h2>Words first</h2>
+      </hgroup>
+      <p>The reading column sits at a comfortable <strong>44rem</strong>. Body copy is set in Inter at 17px with generous leading, while <em>emphasis</em>, <a href="#">inline links</a>, <mark>highlighted passages</mark>, <abbr title="Cascading Style Sheets">CSS</abbr> abbreviations, <code>inline code</code>, <del>deleted</del> and <ins>inserted</ins> text, H<sub>2</sub>O and E = mc<sup>2</sup> all have a considered look.</p>
+
+      <h1>Heading one</h1>
+      <h2>Heading two, the section title</h2>
+      <h3>Heading three for cards and sub-sections</h3>
+      <h4>Heading four, a sans-serif subhead</h4>
+      <h5>Heading five — eyebrow label</h5>
+      <h6>Heading six — muted label</h6>
+
+      <blockquote>
+        <p>We want the internet to feel less like a place you go to get things done, and more like a place you live.</p>
+        <footer>— <cite>Someone who builds browsers</cite></footer>
+      </blockquote>
+
+      <h3>Lists</h3>
+      <ul>
+        <li>Unordered lists have soft, muted markers</li>
+        <li>They nest nicely
+          <ul>
+            <li>Second level item</li>
+            <li>Another one</li>
+          </ul>
+        </li>
+        <li>And keep their rhythm</li>
+      </ul>
+      <ol>
+        <li>Ordered lists use mono numerals</li>
+        <li>That line up neatly</li>
+        <li>Like a little spec sheet</li>
+      </ol>
+
+      <dl>
+        <dt>Definition term</dt>
+        <dd>The description sits in a quieter tone beneath it.</dd>
+        <dt>Another term</dt>
+        <dd>Handy for glossaries, metadata and FAQs.</dd>
+      </dl>
+
+      <aside>
+        <strong>Heads up</strong>
+        <p>An <code>&lt;aside&gt;</code> becomes a tinted callout using your accent color. Great for tips, notes and warnings.</p>
+      </aside>
+
+      <h3>Code</h3>
+<pre><code>&lt;section&gt;
+  &lt;h2&gt;Pricing&lt;/h2&gt;
+  &lt;article&gt;&lt;h3&gt;Free&lt;/h3&gt;&lt;p&gt;For tinkering.&lt;/p&gt;&lt;/article&gt;
+  &lt;article&gt;&lt;h3&gt;Pro&lt;/h3&gt;&lt;p&gt;For shipping.&lt;/p&gt;&lt;/article&gt;
+&lt;/section&gt;</code></pre>
+
+      <figure>
+        <img src="art.svg" alt="Illustration of a browser window floating over a pastel gradient">
+        <figcaption>Figure 1 — Images get soft corners and a mono caption</figcaption>
+      </figure>
+
+      <hr>
+
+      <h3>Tables</h3>
+      <table>
+        <caption>How yearn compares</caption>
+        <thead>
+          <tr><th>Library</th><th>Classes</th><th>Dark mode</th><th>Size</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>yearn.css</td><td>None</td><td>Auto + manual</td><td>~8 KB gz</td></tr>
+          <tr><td>new.css</td><td>None</td><td>Auto</td><td>~4.5 KB</td></tr>
+          <tr><td>Water.css</td><td>None</td><td>Auto</td><td>~2 KB</td></tr>
+          <tr><td>Pico</td><td>Optional</td><td>Auto + manual</td><td>~10 KB</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="forms">
+      <hgroup>
+        <h5>Forms</h5>
+        <h2>Inputs that feel nice to touch</h2>
+      </hgroup>
+
+      <form role="search" onsubmit="return false">
+        <input type="search" placeholder="Search the docs…" aria-label="Search">
+        <button>Search</button>
+      </form>
+
+      <form onsubmit="return false">
+        <label for="name">Name</label>
+        <input id="name" type="text" placeholder="Ada Lovelace">
+
+        <label for="email">Email</label>
+        <input id="email" type="email" placeholder="ada@example.com" required>
+
+        <label for="topic">Topic</label>
+        <select id="topic">
+          <option>Say hello</option>
+          <option>Report a bug</option>
+          <option>Feature request</option>
+        </select>
+
+        <label for="msg">Message</label>
+        <textarea id="msg" placeholder="Tell us something nice…"></textarea>
+
+        <fieldset>
+          <legend>Preferences</legend>
+          <label><input type="checkbox" checked> Send me the newsletter</label>
+          <label><input type="checkbox"> I like surprises</label>
+          <label><input type="radio" name="freq" checked> Weekly</label>
+          <label><input type="radio" name="freq"> Monthly</label>
+          <label><input type="checkbox" role="switch" checked> Enable delight</label>
+        </fieldset>
+
+        <label for="vol">Volume</label>
+        <input id="vol" type="range" value="60">
+
+        <label for="file">Attachment</label>
+        <input id="file" type="file">
+
+        <label for="color">Favorite color</label>
+        <input id="color" type="color" value="#0c50ff">
+
+        <label>Upload progress</label>
+        <progress value="64" max="100">64%</progress>
+
+        <label>Disk usage</label>
+        <meter value="0.7" min="0" max="1" low="0.5" high="0.8" optimum="0.2">70%</meter>
+
+        <div>
+          <button type="submit">Send message</button>
+          <button type="reset">Reset</button>
+          <button disabled>Disabled</button>
+        </div>
+      </form>
+    </section>
+
+    <section id="faq">
+      <hgroup>
+        <h5>FAQ</h5>
+        <h2>Questions, answered</h2>
+      </hgroup>
+      <details open>
+        <summary>Do I really not need any classes?</summary>
+        <p>Really. Everything is keyed off semantic elements, with a few optional attributes like <code>role="button"</code> and <code>data-gradient</code>.</p>
+      </details>
+      <details>
+        <summary>Can I change the fonts and colors?</summary>
+        <p>Every value is a CSS custom property prefixed with <code>--y-</code>. Override them in your own stylesheet after yearn.css.</p>
+      </details>
+      <details>
+        <summary>Does it work without JavaScript?</summary>
+        <p>Yes. The only script on this page powers the demo panel and the dialog button below.</p>
+      </details>
+
+      <p>
+        <button onclick="document.querySelector('dialog').showModal()">Open a dialog</button>
+      </p>
+
+      <dialog>
+        <h3>Hello there 👋</h3>
+        <p>Dialogs get a soft blurred backdrop and a gentle pop-in animation.</p>
+        <form method="dialog">
+          <button>Got it</button>
+          <button value="cancel">Close</button>
+        </form>
+      </dialog>
+    </section>
+
+  </main>
+
+  <footer>
+    <h2>Make something <em>lovely</em>.</h2>
+    <p><a href="#start" role="button">Get started</a></p>
+    <nav>
+      <a href="#">GitHub</a>
+      <a href="#">Docs</a>
+      <a href="#">Changelog</a>
+      <a href="#">License</a>
+    </nav>
+    <p>yearn.css · MIT · Made with care</p>
+  </footer>
+
+  <!-- Demo-only tweak panel -->
+  <details id="tweaks" open>
+    <summary>Tweak</summary>
+    <form>
+    <label>Theme
+      <select id="theme-picker">
+        <option value="">Default</option>
+        <option value="mint">Mint</option>
+        <option value="dusk">Dusk</option>
+        <option value="ember">Ember</option>
+        <option value="tide">Tide</option>
+        <option value="mono">Mono</option>
+        <option value="candy">Candy</option>
+        <option value="arc">Arc</option>
+        <option value="sharebuilder">ShareBuilder</option>
+      </select>
+    </label>
+    <label>Mode
+      <select data-attr="theme">
+        <option value="">System</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+      </select>
+    </label>
+    <label>Grain
+      <input id="grain" type="range" min="0" max="1" step="0.05" value="0.65">
+    </label>
+    <label>Gradient
+      <select data-attr="gradient">
+        <option value="">Theme default</option>
+        <option value="cotton-candy">Cotton candy</option>
+        <option value="creamsicle">Creamsicle</option>
+        <option value="grapefruit">Grapefruit</option>
+        <option value="sunshine">Sunshine</option>
+        <option value="midnight">Midnight</option>
+        <option value="plain">Plain</option>
+      </select>
+    </label>
+    <label>Accent
+      <select data-attr="accent">
+        <option value="">Theme default</option>
+        <option value="blue">Blue</option>
+        <option value="pink">Pink</option>
+        <option value="red">Red</option>
+        <option value="orange">Orange</option>
+        <option value="brown">Brown</option>
+      </select>
+    </label>
+    </form>
+  </details>
+  <script>
+    if (matchMedia('(max-width: 40rem)').matches) document.getElementById('tweaks').open = false;
+    document.querySelectorAll('#tweaks select').forEach((select) => {
+      select.addEventListener('change', () => {
+        const attr = 'data-' + select.dataset.attr;
+        if (select.value) document.documentElement.setAttribute(attr, select.value);
+        else document.documentElement.removeAttribute(attr);
+      });
+    });
+
+    // Themes are plain stylesheets loaded after yearn.css.
+    const picker = document.getElementById('theme-picker');
+    function useTheme(name) {
+      picker.value = name;
+
+      // Gradient and accent presets override a theme, so clear them to show it as designed.
+      for (const attr of ['gradient', 'accent']) {
+        document.documentElement.removeAttribute('data-' + attr);
+        document.querySelector(`[data-attr="${attr}"]`).value = '';
+      }
+
+      document.querySelectorAll('#hero-themes a').forEach((a) => {
+        if (a.dataset.themeFile === name) a.setAttribute('aria-current', 'true');
+        else a.removeAttribute('aria-current');
+      });
+
+      const url = new URL(location.href);
+      if (name) url.searchParams.set('theme', name);
+      else url.searchParams.delete('theme');
+      history.replaceState(null, '', url);
+
+      let link = document.getElementById('yearn-theme');
+      if (!name) return link?.remove();
+      if (!link) {
+        link = Object.assign(document.createElement('link'), { id: 'yearn-theme', rel: 'stylesheet' });
+        document.head.append(link);
+      }
+      link.href = 'themes/' + name + '.css';
+    }
+    picker.addEventListener('change', () => useTheme(picker.value));
+    document.querySelectorAll('[data-theme-file]').forEach((el) => {
+      el.addEventListener('click', (event) => {
+        event.preventDefault();
+        useTheme(el.dataset.themeFile);
+        // Theme cards live below the fold — bring the hero back into view.
+        if (!el.closest('header')) scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+
+    const grain = document.getElementById('grain');
+    grain.addEventListener('input', () => {
+      document.documentElement.style.setProperty('--y-grain', grain.value);
+    });
+    // Shareable demo state: index.html?theme=dusk&mode=dark
+    const params = new URLSearchParams(location.search);
+    if (params.get('theme')) useTheme(params.get('theme'));
+    if (params.get('mode')) {
+      document.documentElement.dataset.theme = params.get('mode');
+      document.querySelector('[data-attr="theme"]').value = params.get('mode');
+    }
+  </script>
+</body>
+</html>

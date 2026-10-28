@@ -1,0 +1,100 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400..900;1,400..900&display=swap");
+
+/* yearn theme: Arc — after the Arc Resource Center (resources.arc.net).
+   White page, heavy electric-blue headlines, Arc-red buttons in sentence case,
+   grainy violet / blue / coral blocks and a grainy blue footer.
+   Archivo stands in for Arc's Marlin typeface. */
+:root {
+  --y-font-sans: "Archivo", ui-sans-serif, system-ui, sans-serif;
+  --y-font-serif: "Archivo", ui-sans-serif, system-ui, sans-serif;
+  --y-heading-weight: 800;
+  --y-heading-color: light-dark(#3139fb, #9a98ff);
+
+  --y-button-font: var(--y-font-sans);
+  --y-button-size: 0.9375rem;
+  --y-button-weight: 600;
+  --y-button-case: none;
+  --y-button-tracking: 0;
+  --y-button-radius: 8px;
+
+  --y-bg: light-dark(#ffffff, #0e0e1a);
+  --y-surface: light-dark(#ffffff, #181828);
+  --y-fg: light-dark(#14142b, #f3f3ff);
+  --y-accent: light-dark(#3139fb, #8d8bff);
+  --y-ink: light-dark(#fb3a4d, #ff5f6d);
+  --y-on-ink: #ffffff;
+  --y-highlight: light-dark(#e6e7fe, rgba(141, 139, 255, 0.3));
+  --y-danger: #fb3a4d;
+  --y-pre-bg: light-dark(#14142b, #07070f);
+  --y-pre-fg: #f3f3ff;
+  --y-footer-bg: #3d3df5;
+  --y-footer-inset: 0px;
+  --y-footer-radius: 0;
+
+  /* a soft lavender wash — the page itself carries the white */
+  --y-hero-from: light-dark(#f6f6ff, #181828);
+  --y-hero-to: light-dark(#dfe1fd, #2a2a7a);
+  --y-hero-stop: 35%;
+  --y-grain: 0.5;
+
+  --y-radius-s: 6px;
+  --y-radius: 8px;
+  --y-radius-l: 12px;
+}
+
+/* Footer, as on the Resource Center: centered call to action, a wavy rule,
+   bold white links in a column and a serif wordmark. */
+body > footer {
+  --y-fg: #ffffff;
+  --y-text: #ffffff;
+  --y-accent: #ffffff;
+}
+body > footer > :is(h2, h3),
+body > footer > :is(h2, h3) + p {
+  text-align: center;
+}
+body > footer > :is(h2, h3) {
+  font-size: clamp(1.5rem, 1.5vw + 1rem, 2rem);
+  letter-spacing: -0.02em;
+}
+body > footer p:has(> :is(a[role="button"], button)) {
+  justify-content: center;
+}
+body > footer nav {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.375rem;
+  max-width: none;
+  margin: 3rem calc(50% - 50vw) 2.5rem;
+  padding: 3.5rem max(var(--y-gutter), calc(50vw - var(--y-wide) / 2)) 0;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='8'%3E%3Cpath d='M0 4 Q6 0 12 4 T24 4' fill='none' stroke='white' stroke-opacity='.7' stroke-width='1.5'/%3E%3C/svg%3E") repeat-x top / 24px 8px;
+}
+body > footer nav a {
+  margin: 0;
+  padding: 0;
+  font-family: var(--y-font-sans);
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+  color: #ffffff;
+}
+body > footer nav a:hover {
+  text-decoration: underline;
+}
+body > footer > p:last-child {
+  border-top: 0;
+  font-family: "Newsreader", Georgia, serif;
+  font-size: 1.25rem;
+  letter-spacing: 0.04em;
+  text-align: center;
+  color: #ffffff;
+}
+
+/* Arc's block colors as gradient presets: <article data-gradient="violet"> etc. */
+:is(:root, *)[data-gradient="violet"] { --y-hero-from: #8a6cf7; --y-hero-to: #8a6cf7; }
+:is(:root, *)[data-gradient="blue"] { --y-hero-from: #1a3cf0; --y-hero-to: #1a3cf0; }
+:is(:root, *)[data-gradient="coral"] { --y-hero-from: #ff5f6a; --y-hero-to: #ff5f6a; }
+:not(:root):is([data-gradient="violet"], [data-gradient="blue"], [data-gradient="coral"]) {
+  color-scheme: dark;
+}

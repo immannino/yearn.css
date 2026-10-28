@@ -1,0 +1,15 @@
+/* yearn theme: Ember — toasted cream, espresso ink, signal-red accent */
+:root {
+  --y-bg: light-dark(#f4ece2, #1a1310);
+  --y-surface: light-dark(#fffaf4, #251c18);
+  --y-fg: light-dark(#340b05, #f6e9de);
+  --y-accent: light-dark(#e0300f, #ff7a5c);
+  --y-ink: light-dark(#340b05, #f6e9de);
+  --y-on-ink: light-dark(#f4ece2, #1a1310);
+  --y-highlight: light-dark(#ffe1a3, rgba(255, 176, 5, 0.3));
+  --y-pre-bg: light-dark(#340b05, #100b09);
+  --y-pre-fg: #f6e9de;
+  --y-footer-bg: #340b05;
+  --y-hero-from: light-dark(#fff1ac, #340b05);
+  --y-hero-to: light-dark(#ff6f3c, #e0300f);
+}

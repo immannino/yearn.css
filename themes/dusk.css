@@ -1,0 +1,15 @@
+/* yearn theme: Dusk — lavender paper, plum ink, violet accent, lilac-to-peach sky */
+:root {
+  --y-bg: light-dark(#efecf5, #16141c);
+  --y-surface: light-dark(#ffffff, #201d28);
+  --y-fg: light-dark(#1c1430, #ece8f5);
+  --y-accent: light-dark(#6436f0, #a98bff);
+  --y-ink: light-dark(#1c1430, #ece8f5);
+  --y-on-ink: light-dark(#efecf5, #16141c);
+  --y-highlight: light-dark(#e4d9ff, rgba(169, 139, 255, 0.3));
+  --y-pre-bg: light-dark(#1c1430, #0f0d14);
+  --y-pre-fg: #ece8f5;
+  --y-footer-bg: #1c1430;
+  --y-hero-from: light-dark(#d8cbff, #2a1a4a);
+  --y-hero-to: light-dark(#ffcfb8, #b4527a);
+}

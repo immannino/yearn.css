@@ -1,0 +1,15 @@
+/* yearn theme: Tide — cool slate paper, navy ink, teal accent, sky-to-seafoam */
+:root {
+  --y-bg: light-dark(#e7edf1, #0f151a);
+  --y-surface: light-dark(#fbfdfe, #172029);
+  --y-fg: light-dark(#0a2233, #e2ecf3);
+  --y-accent: light-dark(#007c9e, #4cc4e6);
+  --y-ink: light-dark(#0a2233, #e2ecf3);
+  --y-on-ink: light-dark(#e7edf1, #0f151a);
+  --y-highlight: light-dark(#c9f0ea, rgba(76, 196, 230, 0.28));
+  --y-pre-bg: light-dark(#0a2233, #091015);
+  --y-pre-fg: #e2ecf3;
+  --y-footer-bg: #0a2233;
+  --y-hero-from: light-dark(#a6dcf2, #0a2233);
+  --y-hero-to: light-dark(#cbf3dc, #1f7f96);
+}

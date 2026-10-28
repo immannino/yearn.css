@@ -1,0 +1,19 @@
+/* yearn theme: Candy — pink paper, magenta accent, loud diagonal neon hero */
+:root {
+  --y-bg: light-dark(#fdf0f8, #170c16);
+  --y-surface: light-dark(#ffffff, #221421);
+  --y-fg: light-dark(#2a0a28, #fbe8f8);
+  --y-accent: light-dark(#d600cf, #ff5cf8);
+  --y-ink: light-dark(#2a0a28, #fbe8f8);
+  --y-on-ink: light-dark(#fdf0f8, #170c16);
+  --y-highlight: light-dark(#ffd0f5, rgba(253, 2, 245, 0.3));
+  --y-pre-bg: light-dark(#2a0a28, #0f070e);
+  --y-pre-fg: #fbe8f8;
+  --y-footer-bg: #2a0a28;
+  --y-hero: linear-gradient(150deg,
+    light-dark(#ffe08a, #3d0a3a) 10%,
+    light-dark(#ff9d7a, #8a0f6e) 50%,
+    light-dark(#ff9cf4, #fa3d1d) 100%);
+  --y-radius: 20px;
+  --y-radius-l: 32px;
+}
