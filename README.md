@@ -149,7 +149,19 @@ npm run contrast   # WCAG contrast audit across every theme
 
 Open `index.html` in a browser to see the demo. `index.html?theme=dusk&mode=dark` opens it with a theme and mode preselected.
 
-`dist/` is committed so the jsDelivr links work. Run `npm run build` before tagging a release.
+`dist/` is committed so the jsDelivr links work.
+
+### Releasing
+
+Releases are automatic. When a change to `yearn.css`, `themes/` or the build script lands on `main`, the [Release workflow](.github/workflows/release.yml) runs the contrast audit, bumps the version, rebuilds `dist/`, updates the pinned CDN links and `CHANGELOG.md`, tags `vX.Y.Z` and publishes a GitHub release. The bump comes from commit messages:
+
+| Commit message | 0.x | 1.0+ |
+|---|---|---|
+| `type!: …` or a `BREAKING CHANGE` footer | minor | major |
+| `feat: …` | patch | minor |
+| anything else | patch | patch |
+
+To write the release notes yourself, add a `## X.Y.Z` section to `CHANGELOG.md` before merging. To force a level, run the workflow by hand from the Actions tab. Preview the next version with `node scripts/release.mjs --dry-run`.
 
 ## Credits
 

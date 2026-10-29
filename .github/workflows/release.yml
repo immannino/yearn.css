@@ -1,0 +1,78 @@
+# Builds, bumps the version, tags and creates a GitHub release when the
+# stylesheet changes on main. jsDelivr picks up the new tag on its own.
+#
+# The bump is read from commit messages (see scripts/release.mjs): "feat:" and
+# "type!:" / "BREAKING CHANGE" raise it, anything else is a patch.
+# Run it by hand from the Actions tab to force a level or to cut the first release.
+
+name: Release
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - yearn.css
+      - themes/**
+      - scripts/build.mjs
+  workflow_dispatch:
+    inputs:
+      bump:
+        description: Version bump
+        type: choice
+        options: [auto, patch, minor, major]
+        default: auto
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    # The release commit itself is pushed with GITHUB_TOKEN, which never
+    # triggers workflows, but guard against it anyway.
+    if: ${{ !startsWith(github.event.head_commit.message, 'release:') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+      - run: npm run contrast
+
+      - id: version
+        run: node scripts/release.mjs ${{ inputs.bump || 'auto' }}
+
+      - run: npm run build
+
+      - name: Commit, tag and push
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          if git rev-parse "v$VERSION" >/dev/null 2>&1; then
+            echo "::error::v$VERSION is already tagged"; exit 1
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add package.json package-lock.json README.md index.html CHANGELOG.md dist
+          git diff --cached --quiet || git commit -m "release: v$VERSION"
+          git tag -a "v$VERSION" -m "v$VERSION"
+          git push origin HEAD:main "v$VERSION"
+
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          gh release create "v$VERSION" \
+            --title "v$VERSION" \
+            --notes-file release-notes.md \
+            dist/yearn.min.css dist/yearn.core.min.css dist/themes/*.min.css
