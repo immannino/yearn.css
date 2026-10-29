@@ -161,7 +161,9 @@ Releases are automatic. When a change to `yearn.css`, `themes/` or the build scr
 | `feat: …` | patch | minor |
 | anything else | patch | patch |
 
-To write the release notes yourself, add a `## X.Y.Z` section to `CHANGELOG.md` before merging. To force a level, run the workflow by hand from the Actions tab. Preview the next version with `node scripts/release.mjs --dry-run`.
+To write the release notes yourself, add a `## X.Y.Z` section to `CHANGELOG.md` before merging. To force a level, run the workflow by hand from the Actions tab.
+
+To release from your machine instead, run `npm run release` (or `npm run release -- minor`). It does the same bump, build, commit and tag, and pushes; the workflow then creates the GitHub release for the tag. `npm run release -- --dry-run` previews the next version and notes.
 
 ## Credits
 

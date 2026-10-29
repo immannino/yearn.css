@@ -4,12 +4,16 @@
 # The bump is read from commit messages (see scripts/release.mjs): "feat:" and
 # "type!:" / "BREAKING CHANGE" raise it, anything else is a patch.
 # Run it by hand from the Actions tab to force a level or to cut the first release.
+#
+# Pushing a v* tag yourself (npm run release) skips the bump and only creates
+# the GitHub release, with notes taken from that version's CHANGELOG section.
 
 name: Release
 
 on:
   push:
     branches: [main]
+    tags: ['v*'] # path filters don't apply to tag pushes
     paths:
       - yearn.css
       - themes/**
@@ -33,7 +37,7 @@ jobs:
   release:
     # The release commit itself is pushed with GITHUB_TOKEN, which never
     # triggers workflows, but guard against it anyway.
-    if: ${{ !startsWith(github.event.head_commit.message, 'release:') }}
+    if: ${{ github.ref_type == 'tag' || !startsWith(github.event.head_commit.message, 'release:') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -49,11 +53,21 @@ jobs:
       - run: npm run contrast
 
       - id: version
+        if: github.ref_type != 'tag'
         run: node scripts/release.mjs ${{ inputs.bump || 'auto' }}
+
+      - id: tagged
+        if: github.ref_type == 'tag'
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          awk -v h="## $VERSION" 'index($0, h) == 1 { f = 1; next } /^## / { f = 0 } f' CHANGELOG.md > release-notes.md
+          [ -s release-notes.md ] || echo "Release v$VERSION." > release-notes.md
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
 
       - run: npm run build
 
       - name: Commit, tag and push
+        if: github.ref_type != 'tag'
         env:
           VERSION: ${{ steps.version.outputs.version }}
         run: |
@@ -70,7 +84,7 @@ jobs:
       - name: Create GitHub release
         env:
           GH_TOKEN: ${{ github.token }}
-          VERSION: ${{ steps.version.outputs.version }}
+          VERSION: ${{ steps.version.outputs.version || steps.tagged.outputs.version }}
         run: |
           gh release create "v$VERSION" \
             --title "v$VERSION" \
