@@ -2,7 +2,7 @@
 
 A classless stylesheet for websites that feel a little more human. Write plain, semantic HTML and get soft gradients, film grain, serif headlines, pill buttons, dark mode and nine swappable themes. No classes required.
 
-**[Live demo →](https://immannino.github.io/yearn.css/)**
+**[Live demo →](https://yearn.ope.cool/)**
 
 ![yearn.css in nine themes](assets/themes.jpg)
 
@@ -56,7 +56,7 @@ Or download [`yearn.css`](yearn.css) and link it locally. Then write HTML:
 | `<menu>` | A row of buttons or links |
 | `<details>`, `<dialog>` | An accordion; a modal with a blurred backdrop |
 
-Everything else (typography, lists, quotes, code, tables, forms, progress, meter, figures, `<kbd>`, `<mark>`) is styled too. See the [demo](https://immannino.github.io/yearn.css/) for every element.
+Everything else (typography, lists, quotes, code, tables, forms, progress, meter, figures, `<kbd>`, `<mark>`) is styled too. See the [demo](https://yearn.ope.cool/) for every element.
 
 ## Options
 
